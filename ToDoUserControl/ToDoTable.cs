@@ -11,7 +11,7 @@ namespace ToDoUserControl
             InitializeComponent();
         }
 
-        private void AddRow(object sender, EventArgs e)
+        public void AddRow(object sender, EventArgs e)
         {
             tlpToDo.RowCount = tlpToDo.RowCount + 1;
             tlpToDo.RowStyles.Add(new RowStyle(SizeType.Absolute, 20));
@@ -21,7 +21,7 @@ namespace ToDoUserControl
             tlpToDo.Controls.Add(new TextBox() { Text = "", BackColor = SystemColors.Control, BorderStyle = BorderStyle.None, Dock = DockStyle.Fill }, 1, tlpToDo.RowCount - 1);
         }
 
-        private void evento(object sender, EventArgs e)
+        public void evento(object sender, EventArgs e)
         {
             TableLayoutPanelCellPosition tlpcp = tlpToDo.GetPositionFromControl((Control)sender);
             

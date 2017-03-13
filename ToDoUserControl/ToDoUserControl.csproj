@@ -63,6 +63,12 @@
     <Compile Include="ToDoTable.Designer.cs">
       <DependentUpon>ToDoTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="RowControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RowControl.Designer.cs">
+      <DependentUpon>RowControl.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -78,6 +84,9 @@
     </Compile>
     <EmbeddedResource Include="ToDoTable.resx">
       <DependentUpon>ToDoTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RowControl.resx">
+      <DependentUpon>RowControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -6,12 +7,13 @@ namespace ToDoUserControl
 {
     public partial class ToDoTable : UserControl
     {
+        private Color ORANGE = Color.FromArgb(255, 152, 1);
+        private Color BLUE = Color.FromArgb(28, 175, 249);
+        private Color GREEN = Color.FromArgb(101, 219, 58);
+        private Color PURPLE = Color.FromArgb(209, 105, 233);
         public ToDoTable()
         {
             InitializeComponent();
-            tlpToDo.AllowDrop = true;
-            tlpToDo.DragDrop += tlpToDo_DragDrop;
-            tlpToDo.DragEnter += tlpToDo_DragEnter;
         }
         /// <summary>
         /// Method called when plus button is pressed, adds a new row to the TableLayoutPanel and adds
@@ -21,67 +23,55 @@ namespace ToDoUserControl
         /// <param name="e">Arguments of the event</param>
         public void AddRow(object sender, EventArgs e)
         {
-            tlpToDo.RowCount = tlpToDo.RowCount + 1;
-            tlpToDo.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
-            tlpToDo.Controls.Add(new RowControl(),0,tlpToDo.RowCount-1);
-            tlpToDo.SetColumnSpan(tlpToDo.GetControlFromPosition(0, tlpToDo.RowCount - 1), 2);
-            Control c = tlpToDo.GetControlFromPosition(0, tlpToDo.RowCount - 1);
-            c.MouseDown += tbMouseDown;
-        }
-
-        /// <summary>
-        /// Method called when an event MouseDown is fired
-        /// </summary>
-        /// <param name="sender">Control that fires the event</param>
-        /// <param name="e">Arguments of the event</param>
-        public void tbMouseDown(object sender, EventArgs e)
-        {
-            ((Control)sender).DoDragDrop(sender, DragDropEffects.Move);
-        }
-
-        /// <summary>
-        /// Set the effects of Drag and Drop 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        public void tlpToDo_DragEnter(object sender, DragEventArgs e)
-        {
-            e.Effect = DragDropEffects.Move;
-        }
-
-        /// <summary>
-        /// Defines the behaviour during a Drag and Drop process
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        public void tlpToDo_DragDrop(object sender, DragEventArgs e)
-        {
-            RowControl tb = e.Data.GetData(typeof(RowControl)) as RowControl;
-            Point location = tlpToDo.PointToClient(new Point(e.X, e.Y));
-
-            int columnIndex = -1;
-            int rowIndex = -1;
-            int x = 0;
-            int y = 0;
-
-            while(columnIndex<= tlpToDo.ColumnCount)
+            if (tlpToDo.RowCount <= 24)
             {
-                if (location.X < x)
-                    break;
-                columnIndex++;
-                x += tlpToDo.GetColumnWidths()[columnIndex];
+                tlpToDo.RowCount = tlpToDo.RowCount + 1;
+                tlpToDo.RowStyles.Add(new RowStyle(SizeType.Absolute, 20));
+                tlpToDo.Controls.Add(new CheckBox() { Text = "", Margin = new Padding(8, 0, 0, 0) }, 0, tlpToDo.RowCount - 1);
+                Control c = tlpToDo.GetControlFromPosition(0, tlpToDo.RowCount - 1);
+                c.Click += new EventHandler(evento);
+                tlpToDo.Controls.Add(new TextBox() { Name ="tbRow-"+tlpToDo.RowCount, Text = "", BackColor = SystemColors.Control, BorderStyle = BorderStyle.None, Dock = DockStyle.Fill }, 1, tlpToDo.RowCount - 1);
             }
-            while (rowIndex <= tlpToDo.RowCount)
+        }
+        
+        private void evento(object sender, EventArgs e)
+         {
+             TableLayoutPanelCellPosition tlpcp = tlpToDo.GetPositionFromControl((Control)sender);
+             
+             Control c = tlpToDo.GetControlFromPosition(tlpcp.Column + 1, tlpcp.Row);
+ 
+             if (c.Enabled)
+                 c.Enabled = false;
+             else
+                 c.Enabled = true;
+         }
+
+        public void changeColor(string color)
+        {
+            foreach (Control c in this.Controls)
             {
-                if (location.Y < y)
+                if (c.GetType() == typeof(TableLayoutPanel))
                 {
-                    break;
+                    foreach (Control cc in c.Controls)
+                    {
+                        switch (color)
+                        {
+                            case "orange":
+                                cc.ForeColor = ORANGE;
+                                break;
+                            case "blue":
+                                cc.ForeColor = BLUE;
+                                break;
+                            case "green":
+                                cc.ForeColor = GREEN;
+                                break;
+                            case "purple":
+                                cc.ForeColor = PURPLE;
+                                break;
+                        }
+                    }
                 }
-                rowIndex++;
-                y += this.tlpToDo.GetRowHeights()[rowIndex];
             }
-
-            tlpToDo.Controls.Add(tb, columnIndex, rowIndex);
         }
     }
 }

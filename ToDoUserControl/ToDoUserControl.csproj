@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{12C809C4-362E-4CDD-BBFB-6CD3F22126A2}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ToDoUserControl</RootNamespace>
     <AssemblyName>ToDoUserControl</AssemblyName>
@@ -63,12 +63,6 @@
     <Compile Include="ToDoTable.Designer.cs">
       <DependentUpon>ToDoTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="RowControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="RowControl.Designer.cs">
-      <DependentUpon>RowControl.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -84,9 +78,6 @@
     </Compile>
     <EmbeddedResource Include="ToDoTable.resx">
       <DependentUpon>ToDoTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RowControl.resx">
-      <DependentUpon>RowControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

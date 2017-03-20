@@ -60,7 +60,6 @@
             this.btnAdd.TabIndex = 0;
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.AddRow);
-            this.btnAdd.DragDrop += new System.Windows.Forms.DragEventHandler(this.ccc);
             // 
             // ToDoTable
             // 

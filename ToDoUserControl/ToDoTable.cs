@@ -124,10 +124,5 @@ namespace ToDoUserControl
         {
             ((TextBox)sender).Text = e.Data.GetData(DataFormats.Text).ToString();
         }
-
-        private void ccc(object sender, DragEventArgs e)
-        {
-
-        }
     }
 }

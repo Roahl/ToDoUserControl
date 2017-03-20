@@ -35,10 +35,12 @@
             // 
             // tlpToDo
             // 
+            this.tlpToDo.AutoScroll = true;
             this.tlpToDo.ColumnCount = 2;
-            this.tlpToDo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.166667F));
+            this.tlpToDo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 22F));
             this.tlpToDo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 94.83334F));
             this.tlpToDo.Controls.Add(this.btnAdd, 0, 0);
+            this.tlpToDo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpToDo.Location = new System.Drawing.Point(0, 0);
             this.tlpToDo.Name = "tlpToDo";
             this.tlpToDo.RowCount = 1;
@@ -54,10 +56,11 @@
             this.btnAdd.Location = new System.Drawing.Point(0, 0);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(0);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(30, 23);
+            this.btnAdd.Size = new System.Drawing.Size(22, 23);
             this.btnAdd.TabIndex = 0;
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.AddRow);
+            this.btnAdd.DragDrop += new System.Windows.Forms.DragEventHandler(this.ccc);
             // 
             // ToDoTable
             // 

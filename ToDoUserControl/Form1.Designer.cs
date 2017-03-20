@@ -33,9 +33,10 @@
             // 
             // toDoTable1
             // 
-            this.toDoTable1.Location = new System.Drawing.Point(-2, 0);
+            this.toDoTable1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toDoTable1.Location = new System.Drawing.Point(0, 0);
             this.toDoTable1.Name = "toDoTable1";
-            this.toDoTable1.Size = new System.Drawing.Size(600, 500);
+            this.toDoTable1.Size = new System.Drawing.Size(607, 497);
             this.toDoTable1.TabIndex = 0;
             // 
             // Form1
